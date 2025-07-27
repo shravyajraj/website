@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog - Aesthetic</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
+  
+</head>
+<body class="bg-cover bg-fixed bg-center text-gray-900 dark:text-white" style="background-image: url('arey.jpg');">
+
+  <header class="fixed w-full bg-white dark:bg-gray-800 shadow z-50 p-4 flex justify-between items-center">
+    <div class="font-bold text-xl">Aesthetic</div>
+    <nav class="space-x-4 hidden sm:flex">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button id="menuBtn" class="sm:hidden text-2xl">☰</button>
+    <div class="space-x-2 hidden sm:block">
+      <button onclick="toggleDarkMode()">🌙</button>
+      <button onclick="toggleMusic()">🎵</button>
+    </div>
+  </header>
+
+  <nav id="mobileMenu" class="hidden flex-col absolute top-[60px] left-0 w-full bg-white dark:bg-gray-800 shadow p-4 sm:hidden z-40">
+    <a href="index.html" class="block py-2">Home</a>
+    <a href="about.html" class="block py-2">About</a>
+    <a href="blog.html" class="block py-2">Blog</a>
+    <a href="contact.html" class="block py-2">Contact</a>
+  </nav>
+
+  <main class="pt-24 px-8 max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold mb-6">Our Blog</h1>
+    <div class="space-y-6">
+      <article>
+        <h2 class="text-2xl font-semibold">Finding Beauty in Simplicity</h2>
+        <p class="text-base mt-2">Embrace the minimal lifestyle in your design, habits, and environment...</p>
+      </article>
+      <article>
+        <h2 class="text-2xl font-semibold">Curating Calm Spaces</h2>
+        <p class="text-base mt-2">Tips to create peaceful surroundings both online and offline...</p>
+      </article>
+    </div>
+  </main>
+
+  <audio id="bg-music" loop src="music.mp3" hidden></audio>
+
+  <script>
+    document.getElementById("menuBtn").addEventListener("click", () => {
+      document.getElementById("mobileMenu").classList.toggle("hidden");
+    });
+
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle("dark");
+    }
+
+    function toggleMusic() {
+      const music = document.getElementById("bg-music");
+      if (music.paused) music.play();
+      else music.pause();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aesthetic Website</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Optional: Improve loader appearance */
+    #loader {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      z-index: 9999;
+    }
+  </style>
+</head>
+
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white fade-in">
+
+  <!-- Loader -->
+  <div id="loader">Loading...</div>
+
+  <!-- Navbar -->
+  <header class="fixed w-full bg-white dark:bg-gray-800 shadow z-50 p-4 flex justify-between items-center">
+    <div class="font-bold text-xl">Aesthetic</div>
+
+    <!-- Desktop Nav -->
+    <nav class="space-x-4 hidden sm:flex">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Mobile menu toggle -->
+    <button id="menuBtn" class="sm:hidden text-2xl">☰</button>
+
+    <!-- Dark/Music Buttons -->
+    <div class="space-x-2 hidden sm:block">
+      <button onclick="toggleDarkMode()">🌙</button>
+      <button onclick="toggleMusic()">🎵</button>
+    </div>
+  </header>
+
+  <!-- Mobile Dropdown Menu -->
+  <nav id="mobileMenu" class="hidden flex-col absolute top-[60px] left-0 w-full bg-white dark:bg-gray-800 shadow p-4 sm:hidden z-40">
+    <a href="index.html" class="block py-2">Home</a>
+    <a href="about.html" class="block py-2">About</a>
+    <a href="blog.html" class="block py-2">Blog</a>
+    <a href="contact.html" class="block py-2">Contact</a>
+  </nav>
+
+  <!-- Hero -->
+ <!-- Hero with Background Video -->
+<section class="relative h-screen overflow-hidden">
+  <!-- Background Video -->
+  <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0">
+    <source src="intro.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Overlay Text Content -->
+  <div class="relative z-10 flex items-center justify-center h-full bg-black/40 dark:bg-black/60">
+    <div class="text-center text-white px-4">
+      <h1 class="text-5xl font-bold">Welcome to Aesthetic</h1>
+      <p class="mt-4 text-lg">Minimal. Calm. Creative.</p>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Gallery -->
+  <section class="p-10 bg-white dark:bg-gray-900">
+    <h2 class="text-3xl text-center font-bold mb-6">Instagram Style Gallery</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+      <img loading="lazy" src="img1.jpg" class="rounded-lg" />
+      <img loading="lazy" src="img2.jpg" class="rounded-lg" />
+      <img loading="lazy" src="img5.jpg" class="rounded-lg" />
+      <img loading="lazy" src="img3.jpg" class="rounded-lg" />
+    </div>
+  </section>
+
+  <!-- Background Music -->
+  <audio id="bg-music" loop src="music.mp3" hidden></audio>
+
+  <!-- Scripts -->
+  <script>
+    // Loader timeout
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("loader").classList.add("hidden");
+      }, 500);
+    });
+
+    // Toggle mobile menu
+    document.getElementById("menuBtn").addEventListener("click", () => {
+      document.getElementById("mobileMenu").classList.toggle("hidden");
+    });
+
+    // Dark mode toggle
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle("dark");
+    }
+
+    // Music toggle
+    function toggleMusic() {
+      const music = document.getElementById("bg-music");
+      if (music.paused) {
+        music.play().catch(() => {
+          alert("Please interact with the page to enable music.");
+        });
+      } else {
+        music.pause();
+      }
+    }
+  </script>
+</body>
+</html>
